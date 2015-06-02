@@ -2,6 +2,10 @@
 @import "../bower_components/normalize-css/normalize.css";
 @import "../bower_components/typeplate-starter-kit/css/typeplate.css";
 
+$bg: rgb(14,7,66);
+$pink: rgb(144, 0, 144);
+$blue: rgb(24, 42, 85);
+
 /**
  * BOX-SIZING
  */
@@ -59,8 +63,11 @@
     pointer-events: none;
     user-select: none;
     transition: all 1s ease;
+    position: fixed;
+    bottom: 0;
+    left:0;
     .pace-progress {
-        background: #2299dd;
+        background: $pink;
         position: fixed;
         z-index: 2000;
         top: 0;
@@ -88,3 +95,20 @@ img {
 /**
  * YOUR CODE HERE
  */
+
+html {
+    background: $bg;
+    color: $pink;
+    border-color: $blue;
+}
+
+.toolbar {
+    background: rgba(0,0,0,0.5);
+    padding: .5rem;
+
+    form {
+        position: absolute;
+        top: .5rem;
+        right: .5rem;
+    }
+}

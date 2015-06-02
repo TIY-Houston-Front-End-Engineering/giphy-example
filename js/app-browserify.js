@@ -6,21 +6,42 @@ require("es5-shim")
 require("babel/register")
 
 var Promise = require('es6-promise').Promise
-// just Node?
-// var fetch = require('node-fetch')
-// Browserify?
-// require('whatwg-fetch') //--> not a typo, don't store as a var
+var Backbone = require('backbone')
+require('whatwg-fetch') //--> not a typo, don't store as a var
 
 // other stuff that we don't really use in our own code
-// var Pace = require("../bower_components/pace/pace.js")
+var Pace = require("../bower_components/pace/pace.js")
 
-// require your own libraries, too!
-// var Router = require('./app.js')
+///---- start ze program!
 
-// window.addEventListener('load', app)
+var form = document.querySelector('.toolbar form'),
+    images = document.querySelector('.images'),
+    input = form.querySelector('input'),
+    apikey = 'dc6zaTOxFJmzC',
+    query = 'kung fury'
 
-// function app() {
-    // start app
-    // new Router()
-// }
+function searchGiphy(query){
+    var url = `http://api.giphy.com/v1/gifs/search?q=${query}&api_key=${apikey}`
+
+    fetch(url).then((r) => r.json()).then((json) => {
+        images.innerHTML = json.data.map((image) => `<img src="${image.images.downsized.url}">`).join('')
+    })
+}
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault()
+    searchGiphy(input.value)
+})
+searchGiphy(query)
+
+
+
+
+
+
+
+
+
+
+
 
